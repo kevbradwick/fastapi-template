@@ -1,0 +1,44 @@
+[tool.poetry]
+name = "fastapi-template"
+version = "0.1.0"
+description = ""
+authors = ["Kevin Bradwick <kevinbradwick@gmail.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.7"
+fastapi = "^0.81.0"
+poetry = "install"
+
+[tool.poetry.dev-dependencies]
+black = "^22.6.0"
+isort = "^5.10.1"
+coverage = "^6.4.4"
+autoflake = "^1.5.1"
+bumpver = "^2022.1118"
+uvicorn = "^0.18.3"
+
+[tool.bumpver]
+current_version = "1.0.0"
+version_pattern = "MAJOR.MINOR.PATCH"
+commit_message = "Bump version {old_version} -> {new_version}"
+commit = true
+tag = true
+push = false
+
+[tool.bumpver.file_patterns]
+"pyproject.toml" = ['current_version = "{version}"', 'version = "{version}"']
+"app/__init__.py" = ["{version}"]
+
+[tool.black]
+line-length = 88
+target-version = ["py37"]
+
+[tool.coverage.run]
+source_pkgs = ['app']
+
+[tool.coverage.html]
+title = "App Coverage"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
